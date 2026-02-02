@@ -1,7 +1,10 @@
 {
+  "installCommand": "npm ci",
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist",
   "build": {
     "env": {
-      "NODE_VERSION": "22.12.0"
+      "NODE_VERSION": "22.x"
     }
   }
 }

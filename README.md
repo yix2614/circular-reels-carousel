@@ -10,7 +10,7 @@ View your app in AI Studio: https://ai.studio/apps/drive/1IZb42rqcmMzRyd9-_mXqBW
 
 ## Run Locally
 
-**Prerequisites:**  Node.js (>= 22.12.0)
+**Prerequisites:**  Node.js (22.x)
 
 
 1. Install dependencies:
@@ -21,8 +21,10 @@ View your app in AI Studio: https://ai.studio/apps/drive/1IZb42rqcmMzRyd9-_mXqBW
 
 ## Deploy to Vercel
 
-If Vercel shows `npm error Exit handler never called`, it is typically a Node.js/npm runtime mismatch. This repo pins Node 22.12.0 via:
+If Vercel shows `npm error Exit handler never called`, it is typically a Node.js/npm runtime mismatch. This repo pins Node **22.x** via:
 
-- `engines.node` in `package.json`
-- `.nvmrc`
-- `vercel.json` with `NODE_VERSION`
+- `engines.node: "22.x"` in `package.json`
+- `.nvmrc` with `22`
+- `vercel.json` with `NODE_VERSION: "22.x"` and `installCommand: "npm ci"`
+
+Note: Vercel only allows major versions (20.x / 22.x / 24.x). Avoid specifying minor/patch versions.
