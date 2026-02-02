@@ -10,7 +10,7 @@ View your app in AI Studio: https://ai.studio/apps/drive/1IZb42rqcmMzRyd9-_mXqBW
 
 ## Run Locally
 
-**Prerequisites:**  Node.js
+**Prerequisites:**  Node.js (>= 22.12.0)
 
 
 1. Install dependencies:
@@ -18,3 +18,11 @@ View your app in AI Studio: https://ai.studio/apps/drive/1IZb42rqcmMzRyd9-_mXqBW
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+
+## Deploy to Vercel
+
+If Vercel shows `npm error Exit handler never called`, it is typically a Node.js/npm runtime mismatch. This repo pins Node 22.12.0 via:
+
+- `engines.node` in `package.json`
+- `.nvmrc`
+- `vercel.json` with `NODE_VERSION`
