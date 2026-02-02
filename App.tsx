@@ -96,7 +96,7 @@ const App: React.FC = () => {
           initial={{ y: 80, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.2, ease: [0.16, 1, 0.3, 1] }}
-          className="relative z-50 pb-10 px-[32px] shrink-0"
+          className="relative z-50 pb-[8px] px-[32px] shrink-0"
         >
           <button className="w-full bg-[#ff2d55] h-[54px] rounded-full flex items-center justify-center gap-3 text-white font-semibold text-lg active:scale-95 transition-transform duration-100 shadow-none border-none outline-none">
             <span>Download App Now</span>
