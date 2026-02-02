@@ -18,7 +18,7 @@ const App: React.FC = () => {
     overallTilt: -10,  
     scale: 0.85,      
     perspective: 2000,
-    blurAmount: 15,
+    blurAmount: 10,
   };
 
   const [fanConfig, setFanConfig] = useState(DEFAULT_CONFIG);
@@ -86,9 +86,25 @@ const App: React.FC = () => {
         <div 
           className="absolute bottom-0 left-0 right-0 pointer-events-none z-40"
           style={{
-            height: '200px', // 减小高度
-            background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.90) 53.74%)',
-            transform: 'translateY(10px)' // 稍微下移
+            height: '280px', // 稍微增加高度以获得更柔和的过渡
+            background: `linear-gradient(
+              180deg,
+              rgba(0,0,0,0) 0%,
+              rgba(0,0,0,0.013) 8.1%,
+              rgba(0,0,0,0.049) 15.5%,
+              rgba(0,0,0,0.111) 22.5%,
+              rgba(0,0,0,0.194) 29%,
+              rgba(0,0,0,0.294) 35.3%,
+              rgba(0,0,0,0.406) 41.2%,
+              rgba(0,0,0,0.522) 47.1%,
+              rgba(0,0,0,0.637) 52.9%,
+              rgba(0,0,0,0.745) 58.8%,
+              rgba(0,0,0,0.840) 64.7%,
+              rgba(0,0,0,0.918) 70.9%,
+              rgba(0,0,0,0.972) 77.5%,
+              rgba(0,0,0,1) 100%
+            )`,
+            transform: 'translateY(1px)' // 微调位置
           }}
         />
 
