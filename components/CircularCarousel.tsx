@@ -66,6 +66,17 @@ export const CircularCarousel: React.FC<CircularCarouselProps> = ({ items, confi
         >
           {items.map((item, i) => {
             const position = i - centerIndex;
+            const distanceFromCenter = Math.abs(position);
+            
+            // 优化逻辑：
+            // 1. 仅播放正中间 (0) 和左右相邻 (±1) 的视频，共3个
+            const shouldPlay = distanceFromCenter <= 1;
+            
+            // 2. 预加载策略：
+            // - 距离 <= 2 (中心5个视频): 'auto' (加载数据以备播放)
+            // - 其他视频: 'metadata' (仅加载首帧，防止白屏，但不下载视频流)
+            const preloadMode = distanceFromCenter <= 2 ? 'auto' : 'metadata';
+
             return (
               <VideoCard
                 key={item.id}
@@ -74,6 +85,8 @@ export const CircularCarousel: React.FC<CircularCarouselProps> = ({ items, confi
                 index={i}
                 totalItems={items.length}
                 config={config}
+                shouldPlay={shouldPlay}
+                preloadMode={preloadMode}
               />
             );
           })}

@@ -14,9 +14,19 @@ interface VideoCardProps {
     fanAngle: number;
     zOffset: number;
   };
+  shouldPlay?: boolean;
+  preloadMode?: 'auto' | 'metadata' | 'none';
 }
 
-export const VideoCard: React.FC<VideoCardProps> = ({ item, position, index, totalItems, config }) => {
+export const VideoCard: React.FC<VideoCardProps> = ({ 
+  item, 
+  position, 
+  index, 
+  totalItems, 
+  config,
+  shouldPlay = false,
+  preloadMode = 'metadata'
+}) => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [hasEntered, setHasEntered] = useState(false);
 
@@ -30,10 +40,22 @@ export const VideoCard: React.FC<VideoCardProps> = ({ item, position, index, tot
   const zIndex = 100 - Math.round(Math.abs(position) * 10);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {});
+    const video = videoRef.current;
+    if (!video) return;
+
+    if (shouldPlay) {
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Auto-play was prevented
+        });
+      }
+    } else {
+      video.pause();
     }
-    
+  }, [shouldPlay]);
+
+  useEffect(() => {
     // 标记进场动画完成
     const totalEntranceTime = (totalItems * 0.18 + 0.8) * 1000;
     const timer = setTimeout(() => {
@@ -113,10 +135,10 @@ export const VideoCard: React.FC<VideoCardProps> = ({ item, position, index, tot
           ref={videoRef}
           src={item.videoUrl} 
           className="w-full h-full object-cover pointer-events-none scale-[1.01]" // 微量缩放确保无间隙
-          autoPlay
           loop
           muted
           playsInline
+          preload={preloadMode}
         />
         {/* 玻璃面层光泽 */}
         <div className="absolute inset-0 bg-gradient-to-tr from-white/10 via-transparent to-white/5 pointer-events-none opacity-30" />
