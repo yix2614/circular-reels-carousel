@@ -1,0 +1,8 @@
+{
+  "name": "Circular Reels Carousel",
+  "description": "A high-performance, mobile-optimized circular carousel for short-form video content with overlapping 3D effects.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ]
+}
