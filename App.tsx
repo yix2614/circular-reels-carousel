@@ -68,7 +68,7 @@ const App: React.FC = () => {
         </motion.header>
 
         {/* Carousel Container */}
-        <div className="relative z-20 flex-grow w-full flex items-center justify-center overflow-visible mb-[-20px]">
+        <div className="absolute inset-0 z-20 w-full h-full flex items-center justify-center overflow-visible pointer-events-none">
           <CircularCarousel key={resetKey} items={MOCK_VIDEOS} config={fanConfig} />
         </div>
 
