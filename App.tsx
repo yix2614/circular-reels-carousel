@@ -68,12 +68,9 @@ const App: React.FC = () => {
         </motion.header>
 
         {/* Carousel Container */}
-        <CircularCarousel 
-          key={resetKey} 
-          items={MOCK_VIDEOS} 
-          config={fanConfig} 
-          className="z-20"
-        />
+        <div className="relative z-20 flex-grow w-full flex items-center justify-center overflow-visible mb-[-20px]">
+          <CircularCarousel key={resetKey} items={MOCK_VIDEOS} config={fanConfig} />
+        </div>
 
         {/* Effects Layers */}
         <div 
@@ -89,8 +86,9 @@ const App: React.FC = () => {
         <div 
           className="absolute bottom-0 left-0 right-0 pointer-events-none z-40"
           style={{
-            height: '240px',
+            height: '200px', // 减小高度
             background: 'linear-gradient(180deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.90) 53.74%)',
+            transform: 'translateY(10px)' // 稍微下移
           }}
         />
 
