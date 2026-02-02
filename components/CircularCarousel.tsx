@@ -17,10 +17,9 @@ interface CircularCarouselProps {
     scale: number;
     perspective: number;
   };
-  className?: string;
 }
 
-export const CircularCarousel: React.FC<CircularCarouselProps> = ({ items, config, className = "" }) => {
+export const CircularCarousel: React.FC<CircularCarouselProps> = ({ items, config }) => {
   const centerIndex = Math.floor(items.length / 2);
   const [hasEntered, setHasEntered] = useState(false);
 
@@ -34,7 +33,7 @@ export const CircularCarousel: React.FC<CircularCarouselProps> = ({ items, confi
   }, [items.length]);
 
   return (
-    <div className={`relative w-full flex-grow flex items-center justify-center overflow-visible pointer-events-none select-none ${className}`}>
+    <div className="relative w-full h-full flex items-center justify-center overflow-visible pointer-events-none select-none">
       <motion.div 
         className="relative w-full h-full flex items-center justify-center"
         animate={{ 
